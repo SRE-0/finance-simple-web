@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Finanzas Personales V2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Mis Finanzas al Día</h1>
+
+        <div class="balance-board">
+            <div class="board-item">
+                <span>Ingresos</span>
+                <div id="total-ingresos" class="monto ingreso-txt">$0.00</div>
+            </div>
+            <div class="board-item">
+                <span>Gastos</span>
+                <div id="total-gastos" class="monto gasto-txt">$0.00</div>
+            </div>
+            <div class="board-item">
+                <span>Balance</span>
+                <div id="total-balance" class="monto balance-txt">$0.00</div>
+            </div>
+        </div>
+
+        <h2>Añadir Transacción</h2>
+        <form id="finance-form">
+            <div>
+                <label for="descripcion">Descripción</label>
+                <input type="text" id="descripcion" placeholder="Ej. Sueldo, Supermercado, Viaje a la playa..." required style="width: 96%;">
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <div style="flex: 1; display: flex; flex-direction: column;">
+                    <label for="monto">Monto ($)</label>
+                    <input type="number" id="monto" step="0.01" placeholder="0.00" required>
+                </div>
+                
+                <div style="flex: 1; display: flex; flex-direction: column;">
+                    <label for="tipo">Tipo</label>
+                    <select id="tipo" required>
+                        <option value="gasto">Gasto (-)</option>
+                        <option value="ingreso">Ganancia (+)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="categoria-container" style="display: flex; flex-direction: column;">
+                <label for="categoria">Categoría del Gasto</label>
+                <select id="categoria">
+                    <option value="Comida">Comida</option>
+                    <option value="Hogar">Hogar</option>
+                    <option value="Viaje">Viaje</option>
+                    <option value="Entretenimiento">Entretenimiento</option>
+                    <option value="Otros">Otros</option>
+                </select>
+            </div>
+
+            <button type="submit">Guardar Transacción</button>
+        </form>
+
+        <h3>Historial de Movimientos</h3>
+        
+        <div class="filtros-container" id="filtros-container">
+            <button class="btn-filtro activo" data-filtro="todos">Todos</button>
+            <button class="btn-filtro" data-filtro="Comida">Comida</button>
+            <button class="btn-filtro" data-filtro="Hogar">Hogar</button>
+            <button class="btn-filtro" data-filtro="Viaje">Viaje</button>
+            <button class="btn-filtro" data-filtro="Entretenimiento">Entretenimiento</button>
+            <button class="btn-filtro" data-filtro="Otros">Otros</button>
+            <button class="btn-filtro" data-filtro="ingresos">Solo Ingresos</button>
+        </div>
+
+        <ul id="lista-transacciones" class="lista-transacciones"></ul>
+
+        <h3>Distribución de Gastos</h3>
+        <div class="resumen-categorias" id="resumen-categorias">
+            <div class="cat-item"><span>Comida:</span> <strong id="cat-Comida">$0.00</strong></div>
+            <div class="cat-item"><span>Hogar:</span> <strong id="cat-Hogar">$0.00</strong></div>
+            <div class="cat-item"><span>Viaje:</span> <strong id="cat-Viaje">$0.00</strong></div>
+            <div class="cat-item"><span>Entretenimiento:</span> <strong id="cat-Entretenimiento">$0.00</strong></div>
+            <div class="cat-item"><span>Otros:</span> <strong id="cat-Otros">$0.00</strong></div>
+        </div>
+    </div>
+
+    <script src="FinanceManager.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
